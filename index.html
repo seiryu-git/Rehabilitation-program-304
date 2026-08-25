@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>更生プログラム</title>
 <link href="https://fonts.googleapis.com/css2?family=Nosifer&family=Creepster&display=swap" rel="stylesheet">
+
 <style>
   html, body {
     margin: 0;
@@ -17,22 +18,28 @@
     font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
     overflow-x: hidden;
   }
+
   input {
     outline: none;
   }
+
   input:focus {
     border-color: #c41616 !important;
   }
+
   button {
     cursor: pointer;
     border-radius: 8px;
   }
+
   button:active {
     transform: scale(0.98);
   }
+
   #card {
     transition: background-color 0.6s ease;
   }
+
   @keyframes flicker {
     0%,100% { opacity:1; }
     45% { opacity:1; }
@@ -42,6 +49,7 @@
     61% { opacity:0.5; }
     62% { opacity:1; }
   }
+
   @keyframes shake-hard {
     0%,100% { transform:translate(0,0); }
     10% { transform:translate(-8px,2px); }
@@ -54,26 +62,32 @@
     80% { transform:translate(8px,-1px); }
     90% { transform:translate(-4px,0); }
   }
+
   .brainwash-text {
     font-family: 'Creepster', cursive;
     animation: flicker 1.2s infinite, shake-hard 0.5s infinite;
   }
+
   @keyframes danger-flash {
     0%, 100% { background-color: #1a0000; }
     50% { background-color: #5a0000; }
   }
+
   .danger-flashing {
     animation: danger-flash 0.35s infinite;
   }
+
   @keyframes pop-in {
     0% { transform: scale(0.3); opacity: 0; }
     60% { transform: scale(1.15); opacity: 1; }
     100% { transform: scale(1); opacity: 1; }
   }
+
   @keyframes light-burst {
     0% { transform: scale(0); opacity: 0.9; }
     100% { transform: scale(1); opacity: 0; }
   }
+
   .light-ring {
     position: absolute;
     top: 50%;
@@ -82,60 +96,146 @@
     height: 60px;
     margin: -30px 0 0 -30px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(255,236,150,0.9) 0%, rgba(255,236,150,0) 70%);
+    background: radial-gradient(
+      circle,
+      rgba(255,236,150,0.9) 0%,
+      rgba(255,236,150,0) 70%
+    );
     animation: light-burst 1.8s ease-out forwards;
     pointer-events: none;
   }
+
   @keyframes breathe-glow {
-    0%,100% { text-shadow: 0 0 12px rgba(26,122,58,0.35); }
-    50% { text-shadow: 0 0 26px rgba(26,122,58,0.6); }
+    0%,100% {
+      text-shadow: 0 0 12px rgba(26,122,58,0.35);
+    }
+    50% {
+      text-shadow: 0 0 26px rgba(26,122,58,0.6);
+    }
   }
+
   .release-text {
-    animation: pop-in 0.6s ease-out, breathe-glow 2.4s ease-in-out infinite 0.6s;
+    animation:
+      pop-in 0.6s ease-out,
+      breathe-glow 2.4s ease-in-out infinite 0.6s;
   }
 </style>
 </head>
+
 <body>
 
 <div style="max-width:900px;width:100%;margin:0 auto;padding:1rem;box-sizing:border-box;">
-  <div id="card" style="background:#000;border:1px solid #3a0000;border-radius:16px;padding:3rem 2.5rem;box-sizing:border-box;position:relative;overflow:hidden;">
+
+  <div id="card"
+       style="background:#000;border:1px solid #3a0000;border-radius:16px;padding:3rem 2.5rem;box-sizing:border-box;position:relative;overflow:hidden;">
+
+    <!-- タイトル -->
     <div id="intro-area" style="text-align:center;margin-bottom:1.5rem;">
-      <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#8a1414" stroke-width="1.5" style="display:inline-block;">
+
+      <svg width="52" height="52" viewBox="0 0 24 24"
+           fill="none" stroke="#8a1414" stroke-width="1.5"
+           style="display:inline-block;">
         <rect x="5" y="11" width="14" height="10" rx="2"></rect>
         <path d="M8 11V7a4 4 0 0 1 8 0v4"></path>
       </svg>
-      <p style="font-family:'Nosifer',cursive;font-size:30px;margin:16px 0 8px;color:#c41616;letter-spacing:2px;">更生プログラム</p>
-      <p style="font-size:17px;color:#8a8a8a;margin:0;">監獄に隠された3つの文字を集め、コードを入力せよ</p>
+
+      <p style="font-family:'Nosifer',cursive;font-size:30px;margin:16px 0 8px;color:#c41616;letter-spacing:2px;">
+        更生プログラム
+      </p>
+
+      <p style="font-size:17px;color:#8a8a8a;margin:0;">
+        監獄に隠された3つの文字を集め、コードを入力せよ
+      </p>
     </div>
 
-    <div id="timer-area" style="display:flex;align-items:center;justify-content:center;gap:12px;margin:2rem 0;">
-      <span id="timer" style="font-size:52px;font-weight:500;font-family:'SF Mono', Consolas, monospace;color:#c41616;">30</span>
-      <span style="font-size:17px;color:#8a8a8a;">秒</span>
+
+    <!-- 開始画面 -->
+    <div id="start-area" style="text-align:center;margin:2rem 0;">
+
+      <button id="startBtn"
+        style="width:100%;background:#1a0000;border:1px solid #4a1010;color:#e8e8e8;font-size:20px;padding:14px;">
+        プログラムを開始する
+      </button>
+
     </div>
 
-    <div id="bar-track" style="width:100%;height:10px;background:#1a0000;border-radius:6px;overflow:hidden;margin-bottom:1.75rem;">
-      <div id="bar" style="height:100%;width:100%;background:#c41616;transition:width 1s linear;"></div>
+
+    <!-- タイマー -->
+    <div id="timer-area"
+         style="display:none;align-items:center;justify-content:center;gap:12px;margin:2rem 0;">
+
+      <span id="timer"
+            style="font-size:52px;font-weight:500;font-family:'SF Mono',Consolas,monospace;color:#c41616;">
+        30
+      </span>
+
+      <span style="font-size:17px;color:#8a8a8a;">
+        秒
+      </span>
+
     </div>
 
-    <div id="form-area">
-      <input id="answer" type="text" placeholder="コードを入力" maxlength="20" autocomplete="off"
-        style="width:100%;text-align:center;font-size:34px;letter-spacing:10px;text-transform:uppercase;background:#0d0d0d;border:1px solid #4a1010;color:#e8e8e8;height:64px;box-sizing:border-box;border-radius:8px;" />
-      <div id="error" style="font-size:15px;color:#c41616;min-height:22px;margin-top:8px;text-align:center;"></div>
-      <button id="submitBtn" style="width:100%;margin-top:12px;background:#1a0000;border:1px solid #4a1010;color:#e8e8e8;font-size:20px;padding:14px;">決定する</button>
+
+    <!-- プログレスバー -->
+    <div id="bar-track"
+         style="display:none;width:100%;height:10px;background:#1a0000;border-radius:6px;overflow:hidden;margin-bottom:1.75rem;">
+
+      <div id="bar"
+           style="height:100%;width:100%;background:#c41616;transition:width 1s linear;">
+      </div>
+
     </div>
 
-    <div id="result-area" style="display:none;text-align:center;padding:1.5rem 0;position:relative;"></div>
 
-    <div id="reset-area" style="display:none;text-align:center;margin-top:1.5rem;">
-      <button id="resetBtn" style="background:transparent;border:1px solid #333;color:#666;font-size:13px;padding:8px 16px;">最初からやり直す</button>
+    <!-- 入力フォーム -->
+    <div id="form-area" style="display:none;">
+
+      <input id="answer"
+             type="text"
+             placeholder="コードを入力"
+             maxlength="20"
+             autocomplete="off"
+             style="width:100%;text-align:center;font-size:34px;letter-spacing:10px;text-transform:uppercase;background:#0d0d0d;border:1px solid #4a1010;color:#e8e8e8;height:64px;box-sizing:border-box;border-radius:8px;" />
+
+      <div id="error"
+           style="font-size:15px;color:#c41616;min-height:22px;margin-top:8px;text-align:center;">
+      </div>
+
+      <button id="submitBtn"
+              style="width:100%;margin-top:12px;background:#1a0000;border:1px solid #4a1010;color:#e8e8e8;font-size:20px;padding:14px;">
+        決定する
+      </button>
+
     </div>
+
+
+    <!-- 結果 -->
+    <div id="result-area"
+         style="display:none;text-align:center;padding:1.5rem 0;position:relative;">
+    </div>
+
+
+    <!-- リセット -->
+    <div id="reset-area"
+         style="display:none;text-align:center;margin-top:1.5rem;">
+
+      <button id="resetBtn"
+              style="background:transparent;border:1px solid #333;color:#666;font-size:13px;padding:8px 16px;">
+        最初からやり直す
+      </button>
+
+    </div>
+
   </div>
 </div>
 
+
 <script>
 (function(){
+
   var TIME_LIMIT = 30;
   var ANSWER = 'KEY';
+
   var timeLeft = TIME_LIMIT;
   var finished = false;
   var intervalId = null;
@@ -145,247 +245,643 @@
   var card = document.getElementById('card');
   var timerEl = document.getElementById('timer');
   var barEl = document.getElementById('bar');
+
   var input = document.getElementById('answer');
   var errorEl = document.getElementById('error');
+
   var btn = document.getElementById('submitBtn');
+  var startBtn = document.getElementById('startBtn');
   var resetBtn = document.getElementById('resetBtn');
+
   var formArea = document.getElementById('form-area');
   var resultArea = document.getElementById('result-area');
   var resetArea = document.getElementById('reset-area');
+
   var introArea = document.getElementById('intro-area');
+  var startArea = document.getElementById('start-area');
+
   var timerArea = document.getElementById('timer-area');
   var barTrack = document.getElementById('bar-track');
 
+
+  /* =========================
+     Audio
+     ========================= */
+
   var audioCtx = null;
+  var masterGain = null;
+
   function getCtx(){
+
     if(!audioCtx){
-      try{ audioCtx = new (window.AudioContext || window.webkitAudioContext)(); }catch(e){}
+
+      try{
+
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+        /* 全体の音量を2倍 */
+        masterGain = audioCtx.createGain();
+        masterGain.gain.value = 2.0;
+
+        masterGain.connect(audioCtx.destination);
+
+      }catch(e){}
+
     }
+
     return audioCtx;
   }
+
+
   function beep(freq, duration, volume, type){
+
     var ctx = getCtx();
+
     if(!ctx) return;
+
     var osc = ctx.createOscillator();
     var gain = ctx.createGain();
+
     osc.type = type || 'square';
     osc.frequency.value = freq;
+
     gain.gain.value = volume || 0.05;
+
     osc.connect(gain);
-    gain.connect(ctx.destination);
+    gain.connect(masterGain);
+
     osc.start();
     osc.stop(ctx.currentTime + duration);
   }
+
+
   function heartbeatThump(){
+
     var ctx = getCtx();
+
     if(!ctx) return;
+
     var osc = ctx.createOscillator();
     var gain = ctx.createGain();
+
     osc.type = 'sine';
-    osc.frequency.setValueAtTime(90, ctx.currentTime);
-    osc.frequency.exponentialRampToValueAtTime(40, ctx.currentTime + 0.15);
-    gain.gain.setValueAtTime(0.25, ctx.currentTime);
-    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.2);
+
+    osc.frequency.setValueAtTime(
+      90,
+      ctx.currentTime
+    );
+
+    osc.frequency.exponentialRampToValueAtTime(
+      40,
+      ctx.currentTime + 0.15
+    );
+
+    gain.gain.setValueAtTime(
+      0.25,
+      ctx.currentTime
+    );
+
+    gain.gain.exponentialRampToValueAtTime(
+      0.001,
+      ctx.currentTime + 0.2
+    );
+
     osc.connect(gain);
-    gain.connect(ctx.destination);
+    gain.connect(masterGain);
+
     osc.start();
     osc.stop(ctx.currentTime + 0.2);
   }
+
+
   function sirenSweep(){
+
     var ctx = getCtx();
+
     if(!ctx) return;
+
     var osc = ctx.createOscillator();
     var gain = ctx.createGain();
+
     osc.type = 'sawtooth';
     gain.gain.value = 0.06;
+
     osc.connect(gain);
-    gain.connect(ctx.destination);
+    gain.connect(masterGain);
+
     var now = ctx.currentTime;
-    osc.frequency.setValueAtTime(300, now);
-    osc.frequency.linearRampToValueAtTime(900, now + 0.4);
-    osc.frequency.linearRampToValueAtTime(300, now + 0.8);
+
+    osc.frequency.setValueAtTime(
+      300,
+      now
+    );
+
+    osc.frequency.linearRampToValueAtTime(
+      900,
+      now + 0.4
+    );
+
+    osc.frequency.linearRampToValueAtTime(
+      300,
+      now + 0.8
+    );
+
     osc.start(now);
     osc.stop(now + 0.8);
   }
+
+
   function dangerAlarm(){
+
     sirenSweep();
-    for(var i=1;i<5;i++){
+
+    for(var i = 1; i < 5; i++){
+
       (function(idx){
+
         var t = setTimeout(function(){
+
           sirenSweep();
           heartbeatThump();
-        }, idx*800);
+
+        }, idx * 800);
+
         sirenTimeouts.push(t);
+
       })(i);
     }
-    for(var j=0;j<10;j++){
+
+
+    for(var j = 0; j < 10; j++){
+
       (function(idx){
-        var t2 = setTimeout(heartbeatThump, idx*450);
+
+        var t2 = setTimeout(
+          heartbeatThump,
+          idx * 450
+        );
+
         sirenTimeouts.push(t2);
+
       })(j);
     }
   }
+
+
   function reliefSound(){
+
     var ctx = getCtx();
+
     if(!ctx) return;
+
+
     var calmBeats = [0, 500, 1100, 1900];
     var beatVolumes = [0.22, 0.16, 0.1, 0.05];
-    for(var i=0;i<calmBeats.length;i++){
+
+
+    for(var i = 0; i < calmBeats.length; i++){
+
       (function(idx){
+
         setTimeout(function(){
+
           var o = ctx.createOscillator();
           var g = ctx.createGain();
+
           o.type = 'sine';
-          o.frequency.setValueAtTime(90, ctx.currentTime);
-          o.frequency.exponentialRampToValueAtTime(55, ctx.currentTime + 0.25);
-          g.gain.setValueAtTime(beatVolumes[idx], ctx.currentTime);
-          g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.3);
-          o.connect(g); g.connect(ctx.destination);
-          o.start(); o.stop(ctx.currentTime + 0.3);
+
+          o.frequency.setValueAtTime(
+            90,
+            ctx.currentTime
+          );
+
+          o.frequency.exponentialRampToValueAtTime(
+            55,
+            ctx.currentTime + 0.25
+          );
+
+          g.gain.setValueAtTime(
+            beatVolumes[idx],
+            ctx.currentTime
+          );
+
+          g.gain.exponentialRampToValueAtTime(
+            0.001,
+            ctx.currentTime + 0.3
+          );
+
+          o.connect(g);
+          g.connect(masterGain);
+
+          o.start();
+          o.stop(ctx.currentTime + 0.3);
+
         }, calmBeats[idx]);
+
       })(i);
     }
+
+
     var chime = [523, 523, 659, 784, 1047];
-    var chimeDur = [0.12, 0.12, 0.12, 0.12, 0.7];
-    var chimeGap = [0, 150, 150, 150, 150];
+
+    var chimeDur = [
+      0.12,
+      0.12,
+      0.12,
+      0.12,
+      0.7
+    ];
+
+    var chimeGap = [
+      0,
+      150,
+      150,
+      150,
+      150
+    ];
+
     var elapsed = 2200;
-    for(var j=0;j<chime.length;j++){
+
+
+    for(var j = 0; j < chime.length; j++){
+
       elapsed += chimeGap[j];
+
       (function(idx, when){
+
         setTimeout(function(){
+
           var o = ctx.createOscillator();
           var g = ctx.createGain();
+
           o.type = 'square';
           o.frequency.value = chime[idx];
-          g.gain.setValueAtTime(0.001, ctx.currentTime);
-          g.gain.linearRampToValueAtTime(0.08, ctx.currentTime + 0.02);
-          g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + chimeDur[idx]);
-          o.connect(g); g.connect(ctx.destination);
-          o.start(); o.stop(ctx.currentTime + chimeDur[idx]);
+
+          g.gain.setValueAtTime(
+            0.001,
+            ctx.currentTime
+          );
+
+          g.gain.linearRampToValueAtTime(
+            0.08,
+            ctx.currentTime + 0.02
+          );
+
+          g.gain.exponentialRampToValueAtTime(
+            0.001,
+            ctx.currentTime + chimeDur[idx]
+          );
+
+          o.connect(g);
+          g.connect(masterGain);
+
+          o.start();
+          o.stop(
+            ctx.currentTime + chimeDur[idx]
+          );
+
         }, when);
+
       })(j, elapsed);
     }
   }
 
+
+  /* =========================
+     音声読み上げ
+     ========================= */
+
   function speakLetter(ch){
+
     try{
+
       if(!window.speechSynthesis) return;
+
       window.speechSynthesis.cancel();
+
       var u = new SpeechSynthesisUtterance(ch);
+
       u.lang = 'en-US';
       u.rate = 0.8;
       u.pitch = 0.6;
+
       window.speechSynthesis.speak(u);
+
     }catch(e){}
   }
 
+
   function clearSirenTimeouts(){
-    for(var i=0;i<sirenTimeouts.length;i++){ clearTimeout(sirenTimeouts[i]); }
+
+    for(var i = 0; i < sirenTimeouts.length; i++){
+
+      clearTimeout(
+        sirenTimeouts[i]
+      );
+
+    }
+
     sirenTimeouts = [];
   }
 
+
+  /* =========================
+     開始
+     ========================= */
+
   function start(){
+
     timeLeft = TIME_LIMIT;
     finished = false;
     prevLen = 0;
+
     clearSirenTimeouts();
+
     input.value = '';
     errorEl.textContent = '';
+
+    startArea.style.display = 'none';
+
     formArea.style.display = 'block';
+
     resultArea.style.display = 'none';
     resultArea.innerHTML = '';
+
     resetArea.style.display = 'none';
+
     timerEl.textContent = String(timeLeft);
+
     barEl.style.width = '100%';
+
     card.className = '';
     card.style.backgroundColor = '#000';
+
     introArea.style.display = 'block';
+
     timerArea.style.display = 'flex';
+
     barTrack.style.display = 'block';
-    if(intervalId) clearInterval(intervalId);
-    intervalId = setInterval(tick, 1000);
+
+
+    if(intervalId){
+      clearInterval(intervalId);
+    }
+
+    intervalId = setInterval(
+      tick,
+      1000
+    );
+
+    input.focus();
   }
+
+
+  /* =========================
+     結果表示
+     ========================= */
 
   function showResult(success){
+
     finished = true;
+
     clearInterval(intervalId);
+
     formArea.style.display = 'none';
+
     resultArea.style.display = 'block';
+
     resetArea.style.display = 'block';
+
     introArea.style.display = 'none';
+
     timerArea.style.display = 'none';
+
     barTrack.style.display = 'none';
 
+
     if(success){
+
       reliefSound();
+
       card.className = '';
       card.style.backgroundColor = '#ffffff';
+
       resultArea.innerHTML =
+
         '<div class="light-ring"></div>' +
+
         '<svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#1a7a3a" stroke-width="1.5" style="display:inline-block;position:relative;">' +
-        '<rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 7-2.5"></path></svg>' +
-        '<p class="release-text" style="font-family:\'Nosifer\',cursive;font-size:48px;font-weight:500;color:#1a7a3a;margin:14px 0 6px;letter-spacing:3px;position:relative;">洗脳解除</p>' +
-        '<p style="font-size:17px;color:#333;margin:0;position:relative;">更生プログラムを削除。囚人の洗脳解除を実行中。</p>';
+
+        '<rect x="5" y="11" width="14" height="10" rx="2"></rect>' +
+        '<path d="M8 11V7a4 4 0 0 1 7-2.5"></path>' +
+
+        '</svg>' +
+
+        '<p class="release-text" style="font-family:\'Nosifer\',cursive;font-size:48px;font-weight:500;color:#1a7a3a;margin:14px 0 6px;letter-spacing:3px;position:relative;">' +
+
+        '洗脳解除' +
+
+        '</p>' +
+
+        '<p style="font-size:17px;color:#333;margin:0;position:relative;">' +
+
+        '更生プログラムを削除。囚人の洗脳解除を実行中。' +
+
+        '</p>';
+
+
       setTimeout(function(){
+
         var ring2 = document.createElement('div');
+
         ring2.className = 'light-ring';
+
         resultArea.appendChild(ring2);
+
       }, 400);
-    } else {
+
+
+    }else{
+
       dangerAlarm();
+
       card.style.backgroundColor = '#1a0000';
+
       card.className = 'danger-flashing';
+
+
       resultArea.innerHTML =
-        '<p class="brainwash-text" style="font-size:48px;margin:0 0 10px;letter-spacing:6px;color:#ff2020;">洗脳中</p>' +
-        '<p style="font-size:17px;color:#e8a8a8;margin:0;">脳が書き換えられていく…もう戻れない</p>';
+
+        '<p class="brainwash-text" style="font-size:48px;margin:0 0 10px;letter-spacing:6px;color:#ff2020;">' +
+
+        '洗脳中' +
+
+        '</p>' +
+
+        '<p style="font-size:17px;color:#e8a8a8;margin:0;">' +
+
+        '脳が書き換えられていく…もう戻れない' +
+
+        '</p>';
     }
   }
+
+
+  /* =========================
+     タイマー
+     ========================= */
 
   function tick(){
+
     timeLeft -= 1;
+
+
     if(timeLeft > 0 && timeLeft <= 10){
-      beep(220, 0.12, 0.06);
+
+      beep(
+        220,
+        0.12,
+        0.06
+      );
     }
+
+
     if(timeLeft <= 0){
+
       timeLeft = 0;
+
       timerEl.textContent = '0';
+
       barEl.style.width = '0%';
-      if(!finished) showResult(false);
+
+      if(!finished){
+
+        showResult(false);
+
+      }
+
       return;
     }
+
+
     timerEl.textContent = String(timeLeft);
-    barEl.style.width = (timeLeft/TIME_LIMIT*100) + '%';
+
+    barEl.style.width =
+      (timeLeft / TIME_LIMIT * 100) + '%';
   }
+
+
+  /* =========================
+     回答
+     ========================= */
 
   function submit(){
+
     if(finished) return;
+
     var raw = input.value.trim();
+
+
     if(raw.length === 0){
-      errorEl.textContent = '単語を入力してください';
+
+      errorEl.textContent =
+        '単語を入力してください';
+
       return;
     }
+
+
     errorEl.textContent = '';
+
     var val = raw.toUpperCase();
+
+
     if(val === ANSWER){
+
       showResult(true);
-    } else {
+
+    }else{
+
       showResult(false);
+
     }
   }
 
-  btn.addEventListener('click', submit);
-  resetBtn.addEventListener('click', start);
-  input.addEventListener('input', function(){
-    errorEl.textContent = '';
-    var val = input.value;
-    if(val.length > prevLen){
-      speakLetter(val.charAt(val.length - 1));
-    }
-    prevLen = val.length;
-  });
-  input.addEventListener('keydown', function(e){ if(e.key === 'Enter') submit(); });
 
-  start();
+  /* =========================
+     イベント
+     ========================= */
+
+  startBtn.addEventListener(
+    'click',
+    function(){
+
+      /* iPhone等でAudioContextを開始 */
+      var ctx = getCtx();
+
+      if(ctx && ctx.state === 'suspended'){
+
+        ctx.resume();
+
+      }
+
+      start();
+
+    }
+  );
+
+
+  btn.addEventListener(
+    'click',
+    submit
+  );
+
+
+  resetBtn.addEventListener(
+    'click',
+    start
+  );
+
+
+  input.addEventListener(
+    'input',
+    function(){
+
+      errorEl.textContent = '';
+
+      var val = input.value;
+
+
+      if(val.length > prevLen){
+
+        speakLetter(
+          val.charAt(val.length - 1)
+        );
+
+      }
+
+      prevLen = val.length;
+    }
+  );
+
+
+  input.addEventListener(
+    'keydown',
+    function(e){
+
+      if(e.key === 'Enter'){
+
+        submit();
+
+      }
+
+    }
+  );
+
+
+  /* ここでは start() を呼ばない */
+  /* 開始ボタンを押すまでタイマーは始まらない */
+
 })();
 </script>
 
