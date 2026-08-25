@@ -794,13 +794,36 @@
     submit
   );
 
-
+/*
   resetBtn.addEventListener(
     'click',
     start
   );
+*/
 
+  resetBtn.addEventListener('click', function(){
 
+    startArea.style.display = 'block';
+
+    formArea.style.display = 'none';
+
+    resultArea.style.display = 'none';
+
+    resetArea.style.display = 'none';
+
+    timerArea.style.display = 'none';
+
+    barTrack.style.display = 'none';
+
+    introArea.style.display = 'block';
+
+    card.className = '';
+
+    card.style.backgroundColor = '#000';
+
+    clearInterval(intervalId);
+
+});
   input.addEventListener(
     'input',
     function(){
