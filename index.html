@@ -96,28 +96,18 @@
     height: 60px;
     margin: -30px 0 0 -30px;
     border-radius: 50%;
-    background: radial-gradient(
-      circle,
-      rgba(255,236,150,0.9) 0%,
-      rgba(255,236,150,0) 70%
-    );
+    background: radial-gradient(circle, rgba(255,236,150,0.9) 0%, rgba(255,236,150,0) 70%);
     animation: light-burst 1.8s ease-out forwards;
     pointer-events: none;
   }
 
   @keyframes breathe-glow {
-    0%,100% {
-      text-shadow: 0 0 12px rgba(26,122,58,0.35);
-    }
-    50% {
-      text-shadow: 0 0 26px rgba(26,122,58,0.6);
-    }
+    0%,100% { text-shadow: 0 0 12px rgba(26,122,58,0.35); }
+    50% { text-shadow: 0 0 26px rgba(26,122,58,0.6); }
   }
 
   .release-text {
-    animation:
-      pop-in 0.6s ease-out,
-      breathe-glow 2.4s ease-in-out infinite 0.6s;
+    animation: pop-in 0.6s ease-out, breathe-glow 2.4s ease-in-out infinite 0.6s;
   }
 </style>
 </head>
@@ -126,15 +116,12 @@
 
 <div style="max-width:900px;width:100%;margin:0 auto;padding:1rem;box-sizing:border-box;">
 
-  <div id="card"
-       style="background:#000;border:1px solid #3a0000;border-radius:16px;padding:3rem 2.5rem;box-sizing:border-box;position:relative;overflow:hidden;">
+  <div id="card" style="background:#000;border:1px solid #3a0000;border-radius:16px;padding:3rem 2.5rem;box-sizing:border-box;position:relative;overflow:hidden;">
 
     <!-- タイトル -->
     <div id="intro-area" style="text-align:center;margin-bottom:1.5rem;">
 
-      <svg width="52" height="52" viewBox="0 0 24 24"
-           fill="none" stroke="#8a1414" stroke-width="1.5"
-           style="display:inline-block;">
+      <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#8a1414" stroke-width="1.5" style="display:inline-block;">
         <rect x="5" y="11" width="14" height="10" rx="2"></rect>
         <path d="M8 11V7a4 4 0 0 1 8 0v4"></path>
       </svg>
@@ -146,10 +133,11 @@
       <p style="font-size:17px;color:#8a8a8a;margin:0;">
         監獄に隠された3つの文字を集め、コードを入力せよ
       </p>
+
     </div>
 
 
-    <!-- 開始画面 -->
+    <!-- 開始ボタン -->
     <div id="start-area" style="text-align:center;margin:2rem 0;">
 
       <button id="startBtn"
@@ -161,11 +149,9 @@
 
 
     <!-- タイマー -->
-    <div id="timer-area"
-         style="display:none;align-items:center;justify-content:center;gap:12px;margin:2rem 0;">
+    <div id="timer-area" style="display:none;align-items:center;justify-content:center;gap:12px;margin:2rem 0;">
 
-      <span id="timer"
-            style="font-size:52px;font-weight:500;font-family:'SF Mono',Consolas,monospace;color:#c41616;">
+      <span id="timer" style="font-size:52px;font-weight:500;font-family:'SF Mono', Consolas, monospace;color:#c41616;">
         30
       </span>
 
@@ -177,12 +163,9 @@
 
 
     <!-- プログレスバー -->
-    <div id="bar-track"
-         style="display:none;width:100%;height:10px;background:#1a0000;border-radius:6px;overflow:hidden;margin-bottom:1.75rem;">
+    <div id="bar-track" style="display:none;width:100%;height:10px;background:#1a0000;border-radius:6px;overflow:hidden;margin-bottom:1.75rem;">
 
-      <div id="bar"
-           style="height:100%;width:100%;background:#c41616;transition:width 1s linear;">
-      </div>
+      <div id="bar" style="height:100%;width:100%;background:#c41616;transition:width 1s linear;"></div>
 
     </div>
 
@@ -191,18 +174,16 @@
     <div id="form-area" style="display:none;">
 
       <input id="answer"
-             type="text"
-             placeholder="コードを入力"
-             maxlength="20"
-             autocomplete="off"
-             style="width:100%;text-align:center;font-size:34px;letter-spacing:10px;text-transform:uppercase;background:#0d0d0d;border:1px solid #4a1010;color:#e8e8e8;height:64px;box-sizing:border-box;border-radius:8px;" />
+        type="text"
+        placeholder="コードを入力"
+        maxlength="20"
+        autocomplete="off"
+        style="width:100%;text-align:center;font-size:34px;letter-spacing:10px;text-transform:uppercase;background:#0d0d0d;border:1px solid #4a1010;color:#e8e8e8;height:64px;box-sizing:border-box;border-radius:8px;" />
 
-      <div id="error"
-           style="font-size:15px;color:#c41616;min-height:22px;margin-top:8px;text-align:center;">
-      </div>
+      <div id="error" style="font-size:15px;color:#c41616;min-height:22px;margin-top:8px;text-align:center;"></div>
 
       <button id="submitBtn"
-              style="width:100%;margin-top:12px;background:#1a0000;border:1px solid #4a1010;color:#e8e8e8;font-size:20px;padding:14px;">
+        style="width:100%;margin-top:12px;background:#1a0000;border:1px solid #4a1010;color:#e8e8e8;font-size:20px;padding:14px;">
         決定する
       </button>
 
@@ -210,17 +191,14 @@
 
 
     <!-- 結果 -->
-    <div id="result-area"
-         style="display:none;text-align:center;padding:1.5rem 0;position:relative;">
-    </div>
+    <div id="result-area" style="display:none;text-align:center;padding:1.5rem 0;position:relative;"></div>
 
 
     <!-- リセット -->
-    <div id="reset-area"
-         style="display:none;text-align:center;margin-top:1.5rem;">
+    <div id="reset-area" style="display:none;text-align:center;margin-top:1.5rem;">
 
       <button id="resetBtn"
-              style="background:transparent;border:1px solid #333;color:#666;font-size:13px;padding:8px 16px;">
+        style="background:transparent;border:1px solid #333;color:#666;font-size:13px;padding:8px 16px;">
         最初からやり直す
       </button>
 
@@ -253,13 +231,12 @@
   var startBtn = document.getElementById('startBtn');
   var resetBtn = document.getElementById('resetBtn');
 
+  var startArea = document.getElementById('start-area');
   var formArea = document.getElementById('form-area');
   var resultArea = document.getElementById('result-area');
   var resetArea = document.getElementById('reset-area');
 
   var introArea = document.getElementById('intro-area');
-  var startArea = document.getElementById('start-area');
-
   var timerArea = document.getElementById('timer-area');
   var barTrack = document.getElementById('bar-track');
 
@@ -279,7 +256,7 @@
 
         audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
-        /* 全体の音量を2倍 */
+        /* 音量を2倍 */
         masterGain = audioCtx.createGain();
         masterGain.gain.value = 2.0;
 
@@ -297,7 +274,7 @@
 
     var ctx = getCtx();
 
-    if(!ctx) return;
+    if(!ctx || !masterGain) return;
 
     var osc = ctx.createOscillator();
     var gain = ctx.createGain();
@@ -319,17 +296,14 @@
 
     var ctx = getCtx();
 
-    if(!ctx) return;
+    if(!ctx || !masterGain) return;
 
     var osc = ctx.createOscillator();
     var gain = ctx.createGain();
 
     osc.type = 'sine';
 
-    osc.frequency.setValueAtTime(
-      90,
-      ctx.currentTime
-    );
+    osc.frequency.setValueAtTime(90, ctx.currentTime);
 
     osc.frequency.exponentialRampToValueAtTime(
       40,
@@ -358,7 +332,7 @@
 
     var ctx = getCtx();
 
-    if(!ctx) return;
+    if(!ctx || !masterGain) return;
 
     var osc = ctx.createOscillator();
     var gain = ctx.createGain();
@@ -371,10 +345,7 @@
 
     var now = ctx.currentTime;
 
-    osc.frequency.setValueAtTime(
-      300,
-      now
-    );
+    osc.frequency.setValueAtTime(300, now);
 
     osc.frequency.linearRampToValueAtTime(
       900,
@@ -395,7 +366,7 @@
 
     sirenSweep();
 
-    for(var i = 1; i < 5; i++){
+    for(var i=1;i<5;i++){
 
       (function(idx){
 
@@ -412,7 +383,7 @@
     }
 
 
-    for(var j = 0; j < 10; j++){
+    for(var j=0;j<10;j++){
 
       (function(idx){
 
@@ -432,14 +403,12 @@
 
     var ctx = getCtx();
 
-    if(!ctx) return;
-
+    if(!ctx || !masterGain) return;
 
     var calmBeats = [0, 500, 1100, 1900];
     var beatVolumes = [0.22, 0.16, 0.1, 0.05];
 
-
-    for(var i = 0; i < calmBeats.length; i++){
+    for(var i=0;i<calmBeats.length;i++){
 
       (function(idx){
 
@@ -503,7 +472,7 @@
     var elapsed = 2200;
 
 
-    for(var j = 0; j < chime.length; j++){
+    for(var j=0;j<chime.length;j++){
 
       elapsed += chimeGap[j];
 
@@ -548,7 +517,7 @@
 
 
   /* =========================
-     音声読み上げ
+     文字読み上げ
      ========================= */
 
   function speakLetter(ch){
@@ -573,7 +542,7 @@
 
   function clearSirenTimeouts(){
 
-    for(var i = 0; i < sirenTimeouts.length; i++){
+    for(var i=0;i<sirenTimeouts.length;i++){
 
       clearTimeout(
         sirenTimeouts[i]
@@ -586,7 +555,7 @@
 
 
   /* =========================
-     開始
+     ゲーム開始
      ========================= */
 
   function start(){
@@ -622,7 +591,6 @@
 
     barTrack.style.display = 'block';
 
-
     if(intervalId){
       clearInterval(intervalId);
     }
@@ -631,13 +599,11 @@
       tick,
       1000
     );
-
-    input.focus();
   }
 
 
   /* =========================
-     結果表示
+     結果
      ========================= */
 
   function showResult(success){
@@ -667,7 +633,6 @@
       card.style.backgroundColor = '#ffffff';
 
       resultArea.innerHTML =
-
         '<div class="light-ring"></div>' +
 
         '<svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#1a7a3a" stroke-width="1.5" style="display:inline-block;position:relative;">' +
@@ -700,7 +665,6 @@
 
       }, 400);
 
-
     }else{
 
       dangerAlarm();
@@ -708,7 +672,6 @@
       card.style.backgroundColor = '#1a0000';
 
       card.className = 'danger-flashing';
-
 
       resultArea.innerHTML =
 
@@ -735,7 +698,6 @@
 
     timeLeft -= 1;
 
-
     if(timeLeft > 0 && timeLeft <= 10){
 
       beep(
@@ -744,7 +706,6 @@
         0.06
       );
     }
-
 
     if(timeLeft <= 0){
 
@@ -755,14 +716,11 @@
       barEl.style.width = '0%';
 
       if(!finished){
-
         showResult(false);
-
       }
 
       return;
     }
-
 
     timerEl.textContent = String(timeLeft);
 
@@ -781,7 +739,6 @@
 
     var raw = input.value.trim();
 
-
     if(raw.length === 0){
 
       errorEl.textContent =
@@ -790,11 +747,9 @@
       return;
     }
 
-
     errorEl.textContent = '';
 
     var val = raw.toUpperCase();
-
 
     if(val === ANSWER){
 
@@ -809,27 +764,30 @@
 
 
   /* =========================
-     イベント
+     開始ボタン
      ========================= */
 
-  startBtn.addEventListener(
-    'click',
-    function(){
+  startBtn.addEventListener('click', function(){
 
-      /* iPhone等でAudioContextを開始 */
-      var ctx = getCtx();
+    /*
+      iPhone / Safariではユーザー操作をきっかけに
+      AudioContextを開始する必要がある
+    */
 
-      if(ctx && ctx.state === 'suspended'){
+    var ctx = getCtx();
 
-        ctx.resume();
-
-      }
-
-      start();
-
+    if(ctx && ctx.state === 'suspended'){
+      ctx.resume();
     }
-  );
 
+    start();
+
+  });
+
+
+  /* =========================
+     その他のイベント
+     ========================= */
 
   btn.addEventListener(
     'click',
@@ -851,13 +809,11 @@
 
       var val = input.value;
 
-
       if(val.length > prevLen){
 
         speakLetter(
           val.charAt(val.length - 1)
         );
-
       }
 
       prevLen = val.length;
@@ -870,17 +826,18 @@
     function(e){
 
       if(e.key === 'Enter'){
-
         submit();
-
       }
 
     }
   );
 
 
-  /* ここでは start() を呼ばない */
-  /* 開始ボタンを押すまでタイマーは始まらない */
+  /*
+    重要：
+    ここでは start() を実行しない。
+    開始ボタンを押すまでタイマーは動かない。
+  */
 
 })();
 </script>
